@@ -102,6 +102,15 @@ p{margin:0 0 1em}
 .hero{padding:clamp(48px,8vw,96px) 0 0}
 .hero-in{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:clamp(28px,5vw,64px);align-items:end}
 .hero h1{font-size:clamp(52px,10.5vw,150px)}
+/* MEMBERSHIP is one long word and the column it sits in stops growing at the
+   wrap's max width, while 10.5vw keeps climbing — so past a certain viewport
+   the word no longer fits and the browser splits it mid-word. Cap the size
+   against the column itself: Anton renders "MEMBERSHIP." at 5.378em, so
+   18cqw always leaves it room to stay whole. */
+@supports (container-type:inline-size){
+  .hero-copy{container-type:inline-size}
+  .hero h1{font-size:min(clamp(52px,10.5vw,150px),18cqw)}
+}
 .hero h1 .dot{color:var(--yel)}
 .lede{font-size:clamp(18px,2.2vw,22px);line-height:1.5;max-width:36ch;margin:22px 0 28px}
 .lede b{font-weight:800}
@@ -163,7 +172,8 @@ p{margin:0 0 1em}
 .panel-head p{color:var(--muted);font-size:17px;margin:0}
 
 /* ========== PANEL 1 — SESSIONS & PRICES (yellow) ========== */
-.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(20px,3vw,32px);align-items:stretch}
+/* min() keeps the 300px floor from overflowing screens narrower than it */
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:clamp(20px,3vw,32px);align-items:stretch}
 .plan{display:flex;flex-direction:column;padding:30px 28px 26px;position:relative;background:var(--white);border:2px solid var(--ink)}
 .plan-yel{background:var(--yel)}
 .plan .tag{
@@ -348,7 +358,7 @@ footer{border-top:1px solid var(--line);background:var(--white);padding:40px 0 1
 <!-- ================= HERO ================= -->
 <header class="hero" id="top">
   <div class="wrap hero-in">
-    <div>
+    <div class="hero-copy">
       <span class="chip">Vauxhall SE11 · Tue / Thu / Sun</span>
       <h1>Membership<span class="dot">.</span></h1>
       <p class="lede">No contract, no joining fee, no direct debit. You pay <b class="hl">£7–£9 a session</b> for the sessions you turn up to — and your first one, you can just walk in.</p>
