@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<!-- DEMO PAGE — tab 3 of the pitch: the offer.
+     Delete this folder when the site ships on the client's domain. -->
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The offer — a new site for Rebels Boxing Gym</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Barlow:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#FAFAF6;--white:#FFFFFF;--ink:#161616;--muted:#67675F;--line:#E7E5DB;
+    --yel:#FFC400;--red:#D0273B;
+    --display:'Anton','Arial Narrow',sans-serif;
+    --body:'Barlow',system-ui,-apple-system,'Segoe UI',sans-serif;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0;background:var(--bg);color:var(--ink);
+    font-family:var(--body);font-size:17px;line-height:1.6;
+    -webkit-font-smoothing:antialiased;overflow-x:hidden
+  }
+  ::selection{background:var(--yel);color:var(--ink)}
+  a{color:inherit}
+  h1,h2,h3{margin:0;font-family:var(--display);font-weight:400;line-height:.96;letter-spacing:.02em;text-transform:uppercase;overflow-wrap:break-word}
+  p{margin:0 0 1em}
+  :focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+  .wrap{max-width:1000px;margin:0 auto;padding:0 clamp(20px,5vw,56px)}
+
+  .demobar{position:sticky;top:0;z-index:100;display:flex;height:48px;background:#161616}
+  .db-tab{
+    flex:1;display:flex;align-items:center;justify-content:center;gap:9px;text-decoration:none;
+    color:#FAFAF6;font-weight:800;font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+    border-right:1px solid rgba(255,255,255,.14)
+  }
+  .db-tab:last-child{border-right:0}
+  .db-n{display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;background:rgba(255,255,255,.14);font-size:10px}
+  .db-tab:hover{color:var(--yel)}
+  .db-on{background:var(--yel);color:var(--ink)}
+  .db-on:hover{color:var(--ink)}
+  .db-on .db-n{background:rgba(22,22,22,.14)}
+  @media(max-width:560px){.db-n{display:none}.db-tab{font-size:10px;letter-spacing:.08em}}
+
+  .chip{
+    display:inline-block;background:var(--yel);color:var(--ink);
+    font-weight:800;font-size:12px;letter-spacing:.14em;text-transform:uppercase;
+    padding:7px 12px;margin:0 0 20px
+  }
+  .hero{padding:clamp(48px,8vw,90px) 0 clamp(36px,6vw,56px)}
+  .hero h1{font-size:clamp(52px,10.5vw,130px)}
+  .hero h1 .dot{color:var(--yel)}
+  .lede{font-size:clamp(18px,2.2vw,22px);line-height:1.5;max-width:44ch;margin:22px 0 0}
+  .lede b{font-weight:800}
+  .lede a{font-weight:700;text-decoration:none;border-bottom:3px solid var(--yel)}
+
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(20px,3vw,32px);align-items:stretch;margin:clamp(28px,5vw,44px) 0 0}
+  .plan{display:flex;flex-direction:column;padding:30px 28px 28px;position:relative;background:var(--white);border:2px solid var(--ink)}
+  .plan-yel{background:var(--yel);box-shadow:8px 8px 0 var(--ink)}
+  .plan .tag{
+    position:absolute;top:0;right:24px;transform:translateY(-50%);
+    font-size:11px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;padding:7px 12px;
+    background:var(--ink);color:var(--white)
+  }
+  .plan-yel .tag{color:var(--yel)}
+  .tag-red{background:var(--red);color:var(--white)}
+  .plan h3{font-size:clamp(30px,3.4vw,40px);margin-bottom:6px}
+  .plan .sub{font-size:14px;font-weight:600;margin:0 0 20px;color:rgba(22,22,22,.72)}
+  .fee{display:flex;align-items:baseline;gap:10px;margin:0 0 20px}
+  .fee .num{font-family:var(--display);font-size:70px;line-height:.85}
+  .num-red{color:var(--red)}
+  .fee .per{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;line-height:1.45;color:rgba(22,22,22,.65)}
+  .rows{list-style:none;margin:0;padding:0;font-size:15px;flex:1}
+  .rows li{display:flex;gap:16px;padding:11px 0;border-bottom:2px solid rgba(22,22,22,.16)}
+  .rows li:first-child{border-top:2px solid rgba(22,22,22,.16)}
+  .rows li:last-child{border-bottom:0}
+  .rows .k{flex:0 0 84px;font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:rgba(22,22,22,.55);padding-top:4px}
+  .rows .v{flex:1;font-weight:700}
+  .rows .v small{display:block;font-size:13px;font-weight:500;line-height:1.5;margin-top:3px;color:rgba(22,22,22,.7)}
+
+  .note{
+    margin:clamp(28px,5vw,44px) 0 0;border-left:4px solid var(--yel);
+    padding:4px 0 4px 20px;max-width:62ch;color:var(--muted);font-size:16px
+  }
+  .note b{color:var(--ink)}
+  .note p:last-child{margin-bottom:0}
+
+  .say{padding:clamp(48px,8vw,90px) 0 clamp(64px,9vw,100px)}
+  .say h2{font-size:clamp(44px,7vw,84px);margin-bottom:18px}
+  .say h2 .dot{color:var(--yel)}
+  .say p{max-width:52ch;font-size:clamp(17px,2vw,20px);color:var(--muted);margin:0}
+  .say b{color:var(--ink)}
+
+  footer{border-top:1px solid var(--line);background:var(--white);padding:32px 0;color:var(--muted);font-size:14px}
+</style>
+</head>
+<body>
+
+<div class="demobar" role="navigation" aria-label="Demo: the new site, the original site and the offer">
+  <a class="db-tab" href="/"><span class="db-n">1</span>New site</a>
+  <a class="db-tab" href="/original"><span class="db-n">2</span>The original</a>
+  <a class="db-tab db-on" href="/offer" aria-current="page"><span class="db-n">3</span>The offer</a>
+</div>
+
+<header class="hero">
+  <div class="wrap">
+    <span class="chip">The offer</span>
+    <h1>Make it yours<span class="dot">.</span></h1>
+    <p class="lede">Everything under <a href="/">tab one</a> — designed for Rebels, written for Rebels, built to work on any phone — live on <b>rebelsboxinggym.com</b>, your own domain.</p>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <div class="cards">
+
+    <article class="plan plan-yel">
+      <span class="tag">One-off</span>
+      <h3>The site</h3>
+      <p class="sub">The whole thing, exactly as you've just seen it</p>
+      <p class="fee"><span class="num">£500</span><span class="per">one payment<br>that's the lot</span></p>
+      <ul class="rows">
+        <li><span class="k">You get</span><span class="v">The full site under tab 1<small>Prices, first night, kit list, competing, questions — the lot.</small></span></li>
+        <li><span class="k">Where</span><span class="v">Your own domain<small>Live on rebelsboxinggym.com, replacing the site under tab 2.</small></span></li>
+        <li><span class="k">Ongoing</span><span class="v">Nothing<small>No contract, no monthly fee. Sound familiar?</small></span></li>
+      </ul>
+    </article>
+
+    <article class="plan">
+      <span class="tag tag-red">Afterwards</span>
+      <h3>Changes</h3>
+      <p class="sub">For when times, prices or people change</p>
+      <p class="fee"><span class="num num-red">£50</span><span class="per">per round of changes<br>not per month</span></p>
+      <ul class="rows">
+        <li><span class="k">What</span><span class="v">Anything on the site<small>Timetable, prices, photos, new words, a whole new page.</small></span></li>
+        <li><span class="k">How</span><span class="v">Message what you want<small>We make it, you check it, it goes live.</small></span></li>
+        <li><span class="k">Or don't</span><span class="v">Change nothing, pay nothing<small>£50 only when you ask us for work.</small></span></li>
+      </ul>
+    </article>
+
+  </div>
+
+  <div class="note">
+    <p style="margin-bottom:0"><b>Why it's priced this way:</b> your gym sells no-contract boxing, so the site is sold the same way. £500 once for the site. £50 a time when you want it changed. No subscription, no lock-in, nothing quietly rolling in the background.</p>
+  </div>
+
+  <section class="say">
+    <h2>Say the word<span class="dot">.</span></h2>
+    <p>Reply to the message that brought you this link, and the site you've just clicked through can be live on <b>rebelsboxinggym.com</b> within days.</p>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">A new website for Rebels Boxing Gym · 15 Newport Street, London SE11 6AJ</div>
+</footer>
+
+</body>
+</html>

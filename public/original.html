@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<!-- DEMO PAGE — tab 2 of the pitch. Shows the client's current live site.
+     Delete this folder when the site ships on the client's domain. -->
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The original — Rebels Boxing Gym</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@500;700;800&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box}
+  body{
+    margin:0;height:100vh;height:100dvh;display:flex;flex-direction:column;
+    background:#FAFAF6;color:#161616;
+    font-family:'Barlow',system-ui,-apple-system,'Segoe UI',sans-serif
+  }
+  :focus-visible{outline:3px solid #161616;outline-offset:3px}
+
+  .demobar{flex:0 0 48px;display:flex;background:#161616}
+  .db-tab{
+    flex:1;display:flex;align-items:center;justify-content:center;gap:9px;text-decoration:none;
+    color:#FAFAF6;font-weight:800;font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+    border-right:1px solid rgba(255,255,255,.14)
+  }
+  .db-tab:last-child{border-right:0}
+  .db-n{display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;background:rgba(255,255,255,.14);font-size:10px}
+  .db-tab:hover{color:#FFC400}
+  .db-on{background:#FFC400;color:#161616}
+  .db-on:hover{color:#161616}
+  .db-on .db-n{background:rgba(22,22,22,.14)}
+  @media(max-width:560px){.db-n{display:none}.db-tab{font-size:10px;letter-spacing:.08em}}
+
+  .strip{
+    flex:0 0 auto;display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center;justify-content:space-between;
+    padding:12px 18px;background:#FFFFFF;border-bottom:1px solid #E7E5DB
+  }
+  .strip p{margin:0;font-size:13.5px;line-height:1.5;color:#67675F}
+  .strip b{color:#161616}
+  .out{
+    flex:0 0 auto;text-decoration:none;background:#FFC400;color:#161616;
+    font-weight:800;font-size:11px;letter-spacing:.1em;text-transform:uppercase;
+    padding:10px 14px;border:2px solid #161616
+  }
+  .out:hover{background:#FFD23F}
+  iframe{flex:1;width:100%;border:0;background:#FFFFFF}
+</style>
+</head>
+<body>
+
+<div class="demobar" role="navigation" aria-label="Demo: the new site, the original site and the offer">
+  <a class="db-tab" href="/"><span class="db-n">1</span>New site</a>
+  <a class="db-tab db-on" href="/original" aria-current="page"><span class="db-n">2</span>The original</a>
+  <a class="db-tab" href="/offer"><span class="db-n">3</span>The offer</a>
+</div>
+
+<div class="strip">
+  <p><b>rebelsboxinggym.com</b> — the site you have today, shown live. Flick between tabs 1 and 2; the difference is the pitch. If the frame below stays blank, the site is refusing to be embedded — use the button.</p>
+  <a class="out" href="https://www.rebelsboxinggym.com/" target="_blank" rel="noopener">Open in a new tab ↗</a>
+</div>
+
+<iframe src="https://www.rebelsboxinggym.com/" title="Rebels Boxing Gym — current website"></iframe>
+
+</body>
+</html>

@@ -4,6 +4,18 @@ Static site for [Rebels Boxing Gym](https://www.instagram.com/rebelsboxinggym/),
 
 Everything inside `public/` **is** the website — plain HTML, no build step. `public/index.html` is the live page, `public/404.html` is shown for addresses that don't exist, and `public/_headers` adds a few security headers.
 
+## The demo tabs (pitch mode)
+
+While this is being pitched to the gym, the site wears a black three-tab bar:
+
+| Tab | URL | What it shows |
+|---|---|---|
+| **1 · New site** | `/` | The new site, built and written for Rebels |
+| **2 · The original** | `/original` | Their current site (rebelsboxinggym.com), embedded live with an open-in-new-tab fallback |
+| **3 · The offer** | `/offer` | The sell: **£500** one-off for the site, **£50** per round of changes after |
+
+**When the gym says yes**, strip the pitch chrome before pointing their domain at it: delete `public/original.html` and `public/offer.html`, and in `public/index.html` remove the demo-bar markup at the top of `<body>` plus the demo-bar CSS block at the bottom of the stylesheet (both are fenced with `══ DEMO BAR ══` comments — the CSS comment lists the two small offsets to restore).
+
 ## How deploys work
 
 The repository is connected to Cloudflare through the dashboard's Git integration. On **every push to `main`**, Cloudflare clones the repo, runs `npx wrangler deploy`, and publishes `public/` — the live site updates on its own moments later at:

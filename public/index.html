@@ -295,9 +295,36 @@ footer{border-top:1px solid var(--line);background:var(--white);padding:40px 0 1
   .panel.active{animation:none}
   .q .a{transition:none}
 }
+
+/* ══ DEMO BAR — pitch chrome, not part of the site itself.
+   Delete this block, the demo bar markup at the top of <body>, and the
+   .nav{top:48px} override below when the site ships on the client's domain,
+   and put the tab-scroll offset in the script back to 80. ══ */
+.demobar{position:sticky;top:0;z-index:100;display:flex;height:48px;background:#161616}
+.db-tab{
+  flex:1;display:flex;align-items:center;justify-content:center;gap:9px;text-decoration:none;
+  color:#FAFAF6;font-weight:800;font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+  border-right:1px solid rgba(255,255,255,.14)
+}
+.db-tab:last-child{border-right:0}
+.db-n{display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;background:rgba(255,255,255,.14);font-size:10px}
+.db-tab:hover{color:var(--yel)}
+.db-on{background:var(--yel);color:var(--ink)}
+.db-on:hover{color:var(--ink)}
+.db-on .db-n{background:rgba(22,22,22,.14)}
+@media(max-width:560px){.db-n{display:none}.db-tab{font-size:10px;letter-spacing:.08em}}
+.nav{top:48px}
 </style>
 </head>
 <body>
+
+<!-- ══ DEMO BAR — remove when the site ships on the client's domain ══ -->
+<div class="demobar" role="navigation" aria-label="Demo: the new site, the original site and the offer">
+  <a class="db-tab db-on" href="/" aria-current="page"><span class="db-n">1</span>New site</a>
+  <a class="db-tab" href="/original"><span class="db-n">2</span>The original</a>
+  <a class="db-tab" href="/offer"><span class="db-n">3</span>The offer</a>
+</div>
+<!-- ══ /DEMO BAR ══ -->
 
 <!-- ================= NAV ================= -->
 <nav class="nav">
@@ -608,7 +635,7 @@ function activate(name, scroll){
   });
   if(scroll){
     var bar = document.querySelector('.tabbar');
-    var y = bar.getBoundingClientRect().top + window.pageYOffset - 80;
+    var y = bar.getBoundingClientRect().top + window.pageYOffset - 128;
     window.scrollTo({top:y, behavior:'smooth'});
   }
 }
