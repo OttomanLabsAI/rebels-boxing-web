@@ -6,20 +6,17 @@ Everything inside `public/` **is** the website — plain HTML, no build step. `p
 
 ## How deploys work
 
-**Every push to `main` publishes the site.** The GitHub Action in `.github/workflows/deploy.yml` uploads `public/` to Cloudflare, which serves it as a Worker named `rebels-boxing-web` at:
+The repository is connected to Cloudflare through the dashboard's Git integration. On **every push to `main`**, Cloudflare clones the repo, runs `npx wrangler deploy`, and publishes `public/` — the live site updates on its own moments later at:
 
     https://rebels-boxing-web.<your-subdomain>.workers.dev
 
-## One-time setup
+Pushes to other branches get a preview build instead of touching the live site. No GitHub secrets or API tokens are involved — the connection lives entirely on the Cloudflare side (**Workers & Pages → your worker → Settings → Build**).
 
-The deploy needs two secrets so GitHub is allowed to talk to your Cloudflare account:
+One thing to keep in sync: the worker you connected in the dashboard should be named `rebels-boxing-web`, the same as the `name` field in `wrangler.jsonc`. If you gave it a different name when connecting, either rename it in the dashboard or change `wrangler.jsonc` to match.
 
-1. **Account ID** — log in at [dash.cloudflare.com](https://dash.cloudflare.com) and open **Workers & Pages**. Your Account ID is shown in the right-hand sidebar.
-2. **API token** — go to [dash.cloudflare.com/profile/api-tokens](https://dash.cloudflare.com/profile/api-tokens) → **Create Token** → use the **Edit Cloudflare Workers** template → **Create Token**, then copy it (it's shown once).
-3. **Add both to GitHub** — in this repo: **Settings → Secrets and variables → Actions → New repository secret**:
-   - `CLOUDFLARE_ACCOUNT_ID` — the ID from step 1
-   - `CLOUDFLARE_API_TOKEN` — the token from step 2
-4. Push to `main` — or run **Deploy to Cloudflare** manually from the **Actions** tab. The first deploy creates the worker on your account; after that every push to `main` updates the live site automatically.
+## Reconnecting (if it's ever needed again)
+
+Cloudflare dashboard → **Workers & Pages → Create → Workers → Import a repository**, pick this repo, set the production branch to `main`, and leave the deploy command as `npx wrangler deploy`. That's the whole integration.
 
 ## Custom domain
 
