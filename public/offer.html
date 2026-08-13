@@ -80,6 +80,27 @@
   .rows .v{flex:1;font-weight:700}
   .rows .v small{display:block;font-size:13px;font-weight:500;line-height:1.5;margin-top:3px;color:rgba(22,22,22,.7)}
 
+  .tape{margin:clamp(8px,2vw,16px) 0 0}
+  .tape-head{max-width:64ch;margin-bottom:clamp(20px,3.5vw,32px)}
+  .tape-head h2{font-size:clamp(34px,5vw,56px);margin-bottom:12px}
+  .tape-head h2 .dot{color:var(--yel)}
+  .tape-head p{color:var(--muted);margin:0}
+  .vs{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:2px solid var(--ink)}
+  .vs-h{
+    background:var(--ink);color:var(--white);font-weight:800;font-size:11px;
+    letter-spacing:.16em;text-transform:uppercase;padding:12px 18px
+  }
+  .vs-h.new{background:var(--yel);color:var(--ink)}
+  .vs-cell{background:var(--white);padding:16px 18px;font-size:15px;line-height:1.55}
+  .vs-cell.old{color:var(--muted)}
+  .vs-cell.old::before{content:"✕";color:var(--red);font-weight:800;margin-right:10px}
+  .vs-cell.new{font-weight:700}
+  .vs-cell.new::before{content:"";display:inline-block;width:12px;height:12px;background:var(--yel);margin-right:10px}
+  @media(max-width:640px){
+    .vs-cell{font-size:13.5px;padding:12px}
+    .vs-h{padding:10px 12px;font-size:10px;letter-spacing:.1em}
+  }
+
   .note{
     margin:clamp(28px,5vw,44px) 0 0;border-left:4px solid var(--yel);
     padding:4px 0 4px 20px;max-width:62ch;color:var(--muted);font-size:16px
@@ -98,9 +119,9 @@
 </head>
 <body>
 
-<div class="demobar" role="navigation" aria-label="Demo: the new site, the original site and the offer">
-  <a class="db-tab" href="/"><span class="db-n">1</span>New site</a>
-  <a class="db-tab" href="/original"><span class="db-n">2</span>The original</a>
+<div class="demobar" role="navigation" aria-label="Demo: the original site, the new site and the offer">
+  <a class="db-tab" href="/"><span class="db-n">1</span>The original</a>
+  <a class="db-tab" href="/new"><span class="db-n">2</span>New site</a>
   <a class="db-tab db-on" href="/offer" aria-current="page"><span class="db-n">3</span>The offer</a>
 </div>
 
@@ -108,11 +129,41 @@
   <div class="wrap">
     <span class="chip">The offer</span>
     <h1>Make it yours<span class="dot">.</span></h1>
-    <p class="lede">Everything under <a href="/">tab one</a> — designed for Rebels, written for Rebels, built to work on any phone — live on <b>rebelsboxinggym.com</b>, your own domain.</p>
+    <p class="lede">Everything under <a href="/new">tab two</a> — designed for Rebels, written for Rebels, built to work on any phone — live on <b>rebelsboxinggym.com</b>, your own domain.</p>
   </div>
 </header>
 
 <main class="wrap">
+
+  <section class="tape">
+    <div class="tape-head">
+      <span class="chip">Tale of the tape</span>
+      <h2>What the new one does better<span class="dot">.</span></h2>
+      <p>Flick between tabs 1 and 2 and score it yourself — here's the card we'd read out.</p>
+    </div>
+    <div class="vs">
+      <div class="vs-h">The site you have</div>
+      <div class="vs-h new">The new site</div>
+
+      <div class="vs-cell old">Visitors have to hunt for what a session costs</div>
+      <div class="vs-cell new">£7–£9 is on the first screen, per session, no contract — before anyone scrolls</div>
+
+      <div class="vs-cell old">A first-timer has to ring up and ask what to do</div>
+      <div class="vs-cell new">A four-step first night: arrive 6.00, say it's your first, pay £9, gloves lent to you</div>
+
+      <div class="vs-cell old">Made for a desktop screen, squeezed onto phones</div>
+      <div class="vs-cell new">Built phone-first — call button and directions pinned within reach of a thumb</div>
+
+      <div class="vs-cell old">The nervous questions go unanswered</div>
+      <div class="vs-cell new">Seven straight answers: sparring, fitness, women training, money worries</div>
+
+      <div class="vs-cell old">Heavy pages that crawl on gym-floor signal</div>
+      <div class="vs-cell new">One feather-light page that loads in a blink on 4G</div>
+
+      <div class="vs-cell old">Nothing warns you the sign outside says Churchills</div>
+      <div class="vs-cell new">Directions that admit it — nobody circles the block twice</div>
+    </div>
+  </section>
 
   <div class="cards">
 
@@ -122,8 +173,8 @@
       <p class="sub">The whole thing, exactly as you've just seen it</p>
       <p class="fee"><span class="num">£500</span><span class="per">one payment<br>that's the lot</span></p>
       <ul class="rows">
-        <li><span class="k">You get</span><span class="v">The full site under tab 1<small>Prices, first night, kit list, competing, questions — the lot.</small></span></li>
-        <li><span class="k">Where</span><span class="v">Your own domain<small>Live on rebelsboxinggym.com, replacing the site under tab 2.</small></span></li>
+        <li><span class="k">You get</span><span class="v">The full site under tab 2<small>Prices, first night, kit list, competing, questions — the lot.</small></span></li>
+        <li><span class="k">Where</span><span class="v">Your own domain<small>Live on rebelsboxinggym.com, replacing the site under tab 1.</small></span></li>
         <li><span class="k">Ongoing</span><span class="v">Nothing<small>No contract, no monthly fee. Sound familiar?</small></span></li>
       </ul>
     </article>

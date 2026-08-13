@@ -6,15 +6,15 @@ Everything inside `public/` **is** the website — plain HTML, no build step. `p
 
 ## The demo tabs (pitch mode)
 
-While this is being pitched to the gym, the site wears a black three-tab bar:
+While this is being pitched to the gym, the site wears a black three-tab bar, in pitch order — what you have, what you could have, what it costs:
 
 | Tab | URL | What it shows |
 |---|---|---|
-| **1 · New site** | `/` | The new site, built and written for Rebels |
-| **2 · The original** | `/original` | Their current site (rebelsboxinggym.com), embedded live with an open-in-new-tab fallback |
-| **3 · The offer** | `/offer` | The sell: **£500** one-off for the site, **£50** per round of changes after |
+| **1 · The original** | `/` (landing) | Their current site (rebelsboxinggym.com), embedded live with an open-in-new-tab fallback |
+| **2 · New site** | `/new` | The new site, built and written for Rebels |
+| **3 · The offer** | `/offer` | The tale of the tape (old vs new), then the sell: **£500** one-off for the site, **£50** per round of changes after |
 
-**When the gym says yes**, strip the pitch chrome before pointing their domain at it: delete `public/original.html` and `public/offer.html`, and in `public/index.html` remove the demo-bar markup at the top of `<body>` plus the demo-bar CSS block at the bottom of the stylesheet (both are fenced with `══ DEMO BAR ══` comments — the CSS comment lists the two small offsets to restore).
+**When the gym says yes**, strip the pitch chrome before pointing their domain at it: delete `public/index.html` and `public/offer.html`, rename `public/new.html` to `public/index.html`, and in it remove the demo-bar markup at the top of `<body>` plus the demo-bar CSS block at the bottom of the stylesheet (both are fenced with `══ DEMO BAR ══` comments — the CSS comment lists the two small offsets to restore).
 
 ## How deploys work
 
