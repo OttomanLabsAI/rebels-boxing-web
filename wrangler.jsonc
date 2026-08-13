@@ -1,0 +1,14 @@
+/*
+ * Cloudflare configuration.
+ * The site is served as static assets by a Cloudflare Worker named
+ * "rebels-boxing-web" — everything in public/ is uploaded as-is.
+ * No build step, no server code.
+ */
+{
+  "name": "rebels-boxing-web",
+  "compatibility_date": "2026-08-01",
+  "assets": {
+    "directory": "./public",
+    "not_found_handling": "404-page"
+  }
+}
