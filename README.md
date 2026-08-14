@@ -6,15 +6,19 @@ Everything inside `public/` **is** the website — plain HTML, no build step. `p
 
 ## The demo tabs (pitch mode)
 
-While this is being pitched to the gym, the site wears a black three-tab bar, in pitch order — what you have, what you could have, what it costs:
+While this is being pitched to the gym, the site wears a black three-tab bar. The bar reads left to right as the pitch — what you have, what you could have, what it costs — but **the demo opens on the new design**, so nobody following the link lands on the old site first:
 
 | Tab | URL | What it shows |
 |---|---|---|
-| **1 · The original** | `/` (landing) | Their current site (rebelsboxinggym.com), embedded live with an open-in-new-tab fallback |
-| **2 · New site** | `/new` | The new site, built and written for Rebels |
+| **1 · The original** | `/original` | Their current site (rebelsboxinggym.com), embedded live with an open-in-new-tab fallback |
+| **2 · New site** | `/` (landing) | The new site, built and written for Rebels |
 | **3 · The offer** | `/offer` | The tale of the tape (old vs new), then the sell: **£500** one-off for the site, **£50** per round of changes after |
 
-**When the gym says yes**, strip the pitch chrome before pointing their domain at it: delete `public/index.html` and `public/offer.html`, rename `public/new.html` to `public/index.html`, and in it remove the demo-bar markup at the top of `<body>` plus the demo-bar CSS block at the bottom of the stylesheet (both are fenced with `══ DEMO BAR ══` comments — the CSS comment lists the two small offsets to restore).
+**When the gym says yes**, strip the pitch chrome before pointing their domain at it: delete `public/original.html`, `public/offer.html` and `public/_redirects`, then in `public/index.html` remove the demo-bar markup at the top of `<body>` plus the demo-bar CSS block at the bottom of the stylesheet (both are fenced with `══ DEMO BAR ══` comments — the CSS comment lists the two small offsets to restore).
+
+## Pitching another site
+
+`docs/pitch-prompt.md` and `docs/pitch-prompt-three-tab.md` are the reusable prompts that build this demo for any client — two tabs (site + offer) or three (their current site copied in, the new site, the offer).
 
 ## How deploys work
 

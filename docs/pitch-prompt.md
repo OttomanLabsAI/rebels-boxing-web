@@ -97,7 +97,5 @@ thing — a fallback font proves nothing.
 
 - Drop the price lines and it still works; it just asks for the money less
   specifically.
-- For a three-tab version — their current site embedded as tab 1 — add: "Tab 1
-  is their existing site at <url> in a full-height iframe with a strip above
-  it naming the domain and an open-in-a-new-tab button, since some hosts
-  refuse to be framed. The site becomes tab 2 and the offer tab 3."
+- For the three-tab version — the client's current site copied in as tab 1, so
+  the comparison is right there — use `pitch-prompt-three-tab.md`.

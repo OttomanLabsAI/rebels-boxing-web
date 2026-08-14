@@ -1,4 +1,5 @@
-# DEMO — the original-site tab moved to the landing page when the tabs were
-# reordered. Keeps any already-shared /original link alive. Delete with the
-# rest of the demo chrome when the site ships on the client's domain.
-/original / 301
+# DEMO — the demo now launches on the new design, so the new site lives at the
+# root and the original moved to /original. Keeps links shared before the swap
+# alive. Delete with the rest of the demo chrome when the site ships on the
+# client's domain.
+/new / 301
