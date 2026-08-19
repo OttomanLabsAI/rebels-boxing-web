@@ -70,16 +70,18 @@ neuter forms, add `noindex`, and put a dated snapshot strip on top. If the site
 can't be captured cleanly, fall back to `original-frame.html` and **say so** —
 never a screenshot pretending to be a page.
 
-**2 · Read what you copied → the brief.** *(gate)* From the captured site pull
-two things: brand (colours, typefaces, logo, tone) and facts (what they sell,
-prices, hours, address, phone, socials). Write them to `brief.json` in the repo.
-Everything on the new site must trace to a line in that brief. Anything missing
-becomes a question for the client, not a guess. **This is the stage that decides
-whether the pitch is honest** — the tale of the tape in stage 4 can only score
-what was actually seen here.
+**2 · Build the brief.** *(gate)* Pull two things: brand (colours, typefaces,
+logo, tone) and facts (what they sell, prices, hours, address, phone, socials).
+Start with the captured site, then fill gaps from their Instagram, Google
+Business listing and Facebook. Write it all to `brief.json`, and **every entry
+carries where it came from and the date it was seen**. Everything on the new site
+must trace to an entry. Anything still missing becomes a question for the client,
+not a guess. See `references/brief.md` for the sourcing rules — they are what
+keep the pitch defensible.
 
-**3 · Build the new site → tab 2, the landing page.** House skeleton dressed in
-their brand tokens, content strictly from the brief. `house-style.md` carries the
+**3 · Pick the layout and build the new site → tab 2, the landing page.** Choose
+the skeleton that fits what the brief actually contains (section 4), dress it in
+their brand tokens, fill it strictly from the brief. `house-style.md` carries the
 rules this build paid for: single-word headlines capped against their own column
 so they never split mid-word, headings never capped at a reading measure, card
 grids on `minmax(min(300px,100%),1fr)`.
@@ -87,7 +89,8 @@ grids on `minmax(min(300px,100%),1fr)`.
 **4 · Build the offer → tab 3.** Harvest the new site's own tokens and components
 so tabs 2 and 3 look the same age. Tale of the tape, two price cards, why it's
 priced that way, closing band. Every left-hand row must cite something observed in
-stage 2.
+the **site capture** — never in a social post. The table scores their website, so
+a row sourced from Instagram is indefensible the moment they open their own site.
 
 **5 · Wire the three tabs.** Bar at the top of all three pages. `/` is the new
 site, `/original` the copy, `/offer` the offer. 301s for any path already shared.
@@ -103,7 +106,33 @@ list of questions for the client.
 
 ---
 
-## 4. What gets lifted from this repo
+## 4. The layouts
+
+Three skeletons, not one template and not a blank page. Each carries the same
+typography laws, the same demo bar and the same verifier, so only the arrangement
+changes — which is what keeps the risk down.
+
+| | Suits | Shape |
+|---|---|---|
+| **A · Tabbed** | A lot to explain, and a nervous first-timer — gyms, clubs, classes, studios | Hero with a timetable card, facts strip, colour-coded tab panels, find-us. *This is the one this repo already is.* |
+| **B · Single scroll** | One clear thing done well — cafés, barbers, trades, small shops | Hero, what we do, proof, practical details, contact. No tabs, nothing to click before the answer. |
+| **C · Call-forward** | The whole job is getting them to ring or book — plumbers, dentists, salons, emergency trades | Hero with the action pinned at the top and the foot of the screen, then reassurance, then detail. |
+
+**Picking one** is a short decision from the brief, not a matter of taste:
+distinct services and a timetable → A; a single service and no timetable → B;
+a primary action that is a phone call or a booking → C. When two fit, prefer the
+simpler one. Record the choice and the reason in the report, so a rebuild can
+argue with it.
+
+**Sequencing:** ship the skill with **A only** — it exists, it is proven, and it
+is lifted straight out of this repo. Add B and C in a second pass once a real
+client has needed them. A skill that does one layout well beats three half-built
+ones, and the picking rule can sit in `SKILL.md` from day one, defaulting to A
+until the others land.
+
+---
+
+## 5. What gets lifted from this repo
 
 Most of the skill already exists as working code here — it's a move, not a build:
 
@@ -121,7 +150,7 @@ Genuinely new: `capture-site.js` and `references/brief.md`.
 
 ---
 
-## 5. Build order
+## 6. Build order
 
 1. **Scaffold** with `skill-creator`; move the seven items above across. Nothing
    new written yet.
@@ -129,10 +158,15 @@ Genuinely new: `capture-site.js` and `references/brief.md`.
    plain static one, a WordPress one, a JavaScript-heavy one. This is the riskiest
    piece and the one worth building first.
 3. **Write `brief.md` and `house-style.md`** — the judgement, not the mechanics.
-4. **Dry run** end to end on a real link into a scratch repo, stopping before
+   `brief.md` is the bigger job now that the brief draws on more than one source:
+   it has to carry the provenance format, the conflict rule and the staleness
+   rule below.
+4. **Lift layout A** out of this repo as the first skeleton, with the picking rule
+   written but defaulting to A. B and C come after a real client needs them.
+5. **Dry run** end to end on a real link into a scratch repo, stopping before
    deploy. Fix what breaks.
-5. **Full run** with deploy, on a business you'd actually pitch.
-6. **Tune the description** so it fires when you want it and stays quiet
+6. **Full run** with deploy, on a business you'd actually pitch.
+7. **Tune the description** so it fires when you want it and stays quiet
    otherwise; `skill-creator` has eval tooling for this if it's worth the time.
 
 Steps 1 and 2 are the bulk. A working first version is realistically one focused
@@ -140,14 +174,18 @@ session plus one round of fixing what the first real link exposes.
 
 ---
 
-## 6. Defaults I've assumed
+## 7. Decisions, settled
 
+- **Layout:** house style with a choice of skeleton — A, B or C above, picked
+  from the brief. Ships with A; B and C follow.
+- **Content:** their old site first, then Instagram, Google Business and Facebook
+  to fill the gaps. Every fact carries its source and date; anything from a social
+  source is marked unconfirmed until the client says otherwise.
 - **£500 / £50** carried as defaults, overridable per run.
 - **One repo per client**, named `<client>-web`.
 - **The new site is one page**, like this one.
-- **Their old site is the only source** for the brief.
 
-## 7. Known limits to design around
+## 8. Known limits to design around
 
 - **The first deploy is manual.** Connecting a repo to Cloudflare happens in their
   dashboard — as it did here. The skill can create and push the repo, but the
@@ -159,3 +197,23 @@ session plus one round of fixing what the first real link exposes.
   verifier fetches real fonts from npm and measures line boxes instead.
 - **Never mirror a site that isn't the client's**, and never let a copy reach a
   search index.
+
+### Pulling from social and listings
+
+Widening the brief past their own website buys a fuller first draft and brings
+three failure modes worth designing against:
+
+- **It is often blocked.** Instagram in particular fights scraping, and a Google
+  listing usually has to be found through search rather than fetched. Treat every
+  public source as best-effort: take what comes, note what didn't, never stall the
+  run over it.
+- **Sources disagree, and the newer one is not always right.** A site says the
+  class starts at 6.00 and the Instagram bio says 6.15. Do not silently pick.
+  Record both, put the conflict in the report as a question for the client, and
+  keep the site's version on the page until they settle it.
+- **Facts rot at different speeds.** Prices and opening hours go stale fastest and
+  are exactly what a client will check first. Anything time-sensitive taken from a
+  social source is marked unconfirmed and listed in the report.
+- **Photographs are not automatically theirs to reuse.** Use only images clearly
+  produced by the business, treat them as placeholders for the pitch, and ask
+  before they ship.
