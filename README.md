@@ -20,6 +20,8 @@ While this is being pitched to the gym, the site wears a black three-tab bar. Th
 
 `docs/pitch-prompt.md` and `docs/pitch-prompt-three-tab.md` are the reusable prompts that build this demo for any client — two tabs (site + offer) or three (their current site copied in, the new site, the offer).
 
+`docs/skill-plan.md` plans the next step: folding that method into a skill that takes a link and returns the finished three-tab demo.
+
 ## How deploys work
 
 The repository is connected to Cloudflare through the dashboard's Git integration. On **every push to `main`**, Cloudflare clones the repo, runs `npx wrangler deploy`, and publishes `public/` — the live site updates on its own moments later at:
